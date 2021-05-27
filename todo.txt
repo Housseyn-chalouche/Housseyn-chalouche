@@ -1,0 +1,49 @@
+
+-----------------------------------------------: sqlite tp :-------------------------------------------------------------------------------
+						 ----------
+						 
+  1- ajouter une colonne des status avec une régle(réstriction, on peut inserer deux mot, 'in progress' ou 'done') ------------done
+  2- lister les taches avec toutes les infos ----------------------------------------------------------------------------------done
+  3- lister les taches + users ------------------------------------------------------------------------------------------------done
+  4- selectionner les taches d'un user ----------------------------------------------------------------------------------------done	
+  5- filter selon le status de la tache (in progress or done) d'un user -------------------------------------------------------done
+
+
+ --: Answers :-----------------------------------------------------------------------------------------------------------------------------
+   -----------
+we have two tables users and tasks defined as:
+	users(user_id integer primary key autoincrement, user_name char(50) not null)
+	tasks(task_id integer primary key autoincrement, task char(50) not null, todo text(250) not null, user_id integer references users) 
+
+befor starting
+
+
+ --1: adding 'status' column with restriant :
+   -----------------------------------------
+
+alter table tasks
+	add status check(status in ('in progress','done'))
+	
+ --2: listing all infos from tasks :
+    --------------------------------
+
+select * from tasks;
+
+ --3: listing all infos from both tables :
+    --------------------------------------
+
+select * from tasks join users on user.user_id=tasks.user_id;
+
+ --4: select the tasks of a user :
+    ------------------------------
+
+select * from tasks join users on users.user_id=tasks.user_id where users.user_id=3;
+select tasks.* from tasks join users on users.user_id=tasks.user_id where users.user_id = 2;
+select users.user_name, tasks.task, tasks.todo, tasks.time_requered, tasks.status from tasks join users on users.user_id=tasks.user_id where users.user_id = 2;
+
+ --5: filter the result according to status :
+    -----------------------------------------
+    
+select tasks.* from tasks join users on users.user_id=tasks.user_id where tasks.status='in progress' and users.user_name like('%hocine%);
+
+
