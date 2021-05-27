@@ -8,4 +8,5 @@ cur = conn.execute('select * from users join tasks on users.user_id=tasks.user_i
 for curser in cur:
     print(cur,'\n')
 
+                   # "select sqlite_version()"
 conn.close()
