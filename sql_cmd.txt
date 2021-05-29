@@ -1,0 +1,4 @@
+
+
+SELECT Total_Changes();
+a function that returns the total number of changes all statements completed since the database connection was opened

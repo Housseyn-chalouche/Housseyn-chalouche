@@ -1,0 +1,8 @@
+- git branch : see all branches
+- git branch checkout [name of the branch] : alter between branches
+
+- git commit -am 'comment': combine two steps (git add [...] and git commit), add all the files that i been tracing and commit at the same time
+- git log: show logs journals
+- git merge : take changes from a branch and merge them with the master branch
+
+- git push --set-upstream origin [name of the branch]: when you working on a branch locally and try to push a message will appear to choose which branches to push to (in github)  
